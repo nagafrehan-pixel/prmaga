@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>إضافة منتج - شركة الكوتشيات</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Tahoma, sans-serif;
+        }
+
+        body {
+            background: #f3f6fa;
+            color: #172033;
+        }
+
+        /* الهيدر */
+
+        header {
+            background: #111827;
+            color: white;
+            padding: 20px 40px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+        /* الصفحة */
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .title {
+            margin-bottom: 25px;
+        }
+
+        .title h1 {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .title p {
+            color: #6b7280;
+        }
+
+        /* الكارت */
+
+        .form-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+
+            box-shadow:
+                0 8px 30px rgba(0,0,0,0.07);
+        }
+
+        .form-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .input-group.full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input,
+        select {
+
+            padding: 14px;
+
+            border:
+                1px solid #d9dee7;
+
+            border-radius: 10px;
+
+            font-size: 16px;
+
+            outline: none;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #2563eb;
+        }
+
+        /* المقاسات */
+
+        .sizes {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .size-option {
+
+            padding: 10px 15px;
+
+            border:
+                1px solid #dbe2ea;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            background: #f8fafc;
+        }
+
+        .size-option.active {
+
+            background: #2563eb;
+
+            color: white;
+
+            border-color: #2563eb;
+        }
+
+        /* زر الحفظ */
+
+        .buttons {
+
+            margin-top: 30px;
+
+            display: flex;
+
+            gap: 10px;
+        }
+
+        button {
+
+            border: none;
+
+            padding: 14px 25px;
+
+            border-radius: 10px;
+
+            font-size: 16px;
+
+            cursor: pointer;
+        }
+
+        .save {
+
+            background: #2563eb;
+
+            color: white;
+        }
+
+        .save:hover {
+
+            background: #1d4ed8;
+        }
+
+        .cancel {
+
+            background: #e5e7eb;
+        }
+
+        /* رسالة النجاح */
+
+        .success {
+
+            display: none;
+
+            margin-top: 20px;
+
+            padding: 15px;
+
+            border-radius: 10px;
+
+            background: #dcfce7;
+
+            color: #166534;
+
+            font-weight: bold;
+        }
+
+        /* الموبايل */
+
+        @media(max-width:700px) {
+
+            .form-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .input-group.full {
+
+                grid-column: auto;
+
+            }
+
+            header {
+
+                padding: 18px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="logo">
+
+        👟 <span>شركة الكوتشيات</span>
+
+    </div>
+
+    <div>
+
+        إضافة منتج
+
+    </div>
+
+</header>
+
+
+
+<div class="container">
+
+
+    <div class="title">
+
+        <h1>➕ إضافة منتج جديد</h1>
+
+        <p>
+            أضف بيانات الكوتشي ليظهر بعد ذلك في البحث
+        </p>
+
+    </div>
+
+
+
+    <div class="form-card">
+
+
+        <form id="productForm">
+
+
+            <div class="form-grid">
+
+
+                <!-- اسم المنتج -->
+
+                <div class="input-group">
+
+                    <label>
+                        اسم المنتج
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="مثال: Nike Air Max 270"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- كود المنتج -->
+
+                <div class="input-group">
+
+                    <label>
+                        كود المنتج / الباركود
+                    </label>
+
+                    <input
+                        type="text"
+                        id="code"
+                        placeholder="مثال: NK-270-01"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- الماركة -->
+
+                <div class="input-group">
+
+                    <label>
+                        الماركة
+                    </label>
+
+                    <input
+                        type="text"
+                        id="brand"
+                        placeholder="Nike"
+                    >
+
+                </div>
+
+
+
+                <!-- النوع -->
+
+                <div class="input-group">
+
+                    <label>
+                        نوع الكوتشي
+                    </label>
+
+                    <select id="type">
+
+                        <option value="">
+                            اختر النوع
+                        </option>
+
+                        <option>
+                            رياضي
+                        </option>
+
+                        <option>
+                            جري
+                        </option>
+
+                        <option>
+                            كاجوال
+                        </option>
+
+                        <option>
+                            كرة قدم
+                        </option>
+
+                        <option>
+                            أطفال
+                        </option>
+
+                        <option>
+                            آخر
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- اللون -->
+
+                <div class="input-group">
+
+                    <label>
+                        اللون
+                    </label>
+
+                    <input
+                        type="text"
+                        id="color"
+                        placeholder="أسود"
+                    >
+
+                </div>
+
+
+
+                <!-- السعر -->
+
+                <div class="input-group">
+
+                    <label>
+                        سعر البيع
+                    </label>
+
+                    <input
+                        type="number"
+                        id="price"
+                        placeholder="2500"
+                        min="0"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- الكمية -->
+
+                <div class="input-group">
+
+                    <label>
+                        الكمية
+                    </label>
+
+                    <input
+                        type="number"
+                        id="quantity"
+                        placeholder="10"
+                        min="0"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- المقاسات -->
+
+                <div class="input-group">
+
+                    <label>
+                        المقاسات المتاحة
+                    </label>
+
+                    <div class="sizes">
+
+                        <div class="size-option"
+                             data-size="36">
+                            36
+                        </div>
+
+                        <div class="size-option"
+                             data-size="37">
+                            37
+                        </div>
+
+                        <div class="size-option"
+                             data-size="38">
+                            38
+                        </div>
+
+                        <div class="size-option"
+                             data-size="39">
+                            39
+                        </div>
+
+                        <div class="size-option"
+                             data-size="40">
+                            40
+                        </div>
+
+                        <div class="size-option"
+                             data-size="41">
+                            41
+                        </div>
+
+                        <div class="size-option"
+                             data-size="42">
+                            42
+                        </div>
+
+                        <div class="size-option"
+                             data-size="43">
+                            43
+                        </div>
+
+                        <div class="size-option"
+                             data-size="44">
+                            44
+                        </div>
+
+                        <div class="size-option"
+                             data-size="45">
+                            45
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- صورة -->
+
+                <div class="input-group full">
+
+                    <label>
+                        صورة المنتج
+                    </label>
+
+                    <input
+                        type="file"
+                        id="image"
+                        accept="image/*"
+                    >
+
+                </div>
+
+
+
+            </div>
+
+
+
+            <!-- الأزرار -->
+
+            <div class="buttons">
+
+                <button
+                    type="submit"
+                    class="save">
+
+                    💾 حفظ المنتج
+
+                </button>
+
+
+                <button
+                    type="reset"
+                    class="cancel">
+
+                    مسح البيانات
+
+                </button>
+
+            </div>
+
+
+
+            <div
+                class="success"
+                id="success">
+
+                ✅ تم حفظ المنتج بنجاح
+
+            </div>
+
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+    /*
+        اختيار المقاسات
+    */
+
+    const sizeOptions =
+        document.querySelectorAll(
+            ".size-option"
+        );
+
+
+    sizeOptions.forEach(function(size) {
+
+        size.addEventListener(
+            "click",
+            function() {
+
+                size.classList.toggle(
+                    "active"
+                );
+
+            }
+        );
+
+    });
+
+
+
+    /*
+        حفظ المنتج
+    */
+
+    document
+        .getElementById("productForm")
+        .addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+
+                const selectedSizes = [];
+
+
+                document
+                    .querySelectorAll(
+                        ".size-option.active"
+                    )
+                    .forEach(function(size) {
+
+                        selectedSizes.push(
+                            size.dataset.size
+                        );
+
+                    });
+
+
+
+                const product = {
+
+                    id: Date.now(),
+
+                    name:
+                        document
+                        .getElementById("name")
+                        .value,
+
+                    code:
+                        document
+                        .getElementById("code")
+                        .value,
+
+                    brand:
+                        document
+                        .getElementById("brand")
+                        .value,
+
+                    type:
+                        document
+                        .getElementById("type")
+                        .value,
+
+                    color:
+                        document
+                        .getElementById("color")
+                        .value,
+
+                    price:
+                        document
+                        .getElementById("price")
+                        .value,
+
+                    quantity:
+                        document
+                        .getElementById("quantity")
+                        .value,
+
+                    sizes:
+                        selectedSizes
+
+                };
+
+
+                /*
+                    جلب المنتجات القديمة
+                */
+
+                let products =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "products"
+                        )
+                    ) || [];
+
+
+                /*
+                    إضافة المنتج
+                */
+
+                products.push(product);
+
+
+                /*
+                    حفظ المنتجات
+                */
+
+                localStorage.setItem(
+                    "products",
+                    JSON.stringify(products)
+                );
+
+
+                /*
+                    رسالة نجاح
+                */
+
+                document
+                    .getElementById("success")
+                    .style.display = "block";
+
+
+                /*
+                    تنظيف الفورم
+                */
+
+                document
+                    .getElementById("productForm")
+                    .reset();
+
+
+                sizeOptions.forEach(
+                    function(size) {
+
+                        size.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+
+                setTimeout(
+                    function() {
+
+                        document
+                            .getElementById("success")
+                            .style.display = "none";
+
+                    },
+                    3000
+                );
+
+            }
+        );
+
+</script>
+
+
+</body>
+
+</html>

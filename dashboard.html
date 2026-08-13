@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        لوحة تحكم الشركة
+    </title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+
+            font-family:
+                Arial,
+                Tahoma,
+                sans-serif;
+        }
+
+
+        body {
+
+            background: #f3f6fa;
+
+            color: #172033;
+
+        }
+
+
+        /* =========================
+           الهيدر
+        ========================= */
+
+        header {
+
+            background: #111827;
+
+            color: white;
+
+            padding: 20px 40px;
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+
+        }
+
+
+        .logo {
+
+            font-size: 23px;
+
+            font-weight: bold;
+
+        }
+
+
+        .logo span {
+
+            color: #60a5fa;
+
+        }
+
+
+        .date {
+
+            color: #cbd5e1;
+
+            font-size: 14px;
+
+        }
+
+
+        /* =========================
+           الصفحة
+        ========================= */
+
+        .container {
+
+            max-width: 1250px;
+
+            margin: 35px auto;
+
+            padding: 20px;
+
+        }
+
+
+        .title {
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .title h1 {
+
+            font-size: 30px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .title p {
+
+            color: #64748b;
+
+        }
+
+
+        /* =========================
+           الكروت
+        ========================= */
+
+        .stats {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 18px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .stat {
+
+            background: white;
+
+            border-radius: 16px;
+
+            padding: 22px;
+
+            box-shadow:
+                0 5px 20px
+                rgba(0,0,0,0.06);
+
+        }
+
+
+        .stat-icon {
+
+            font-size: 28px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .stat-number {
+
+            font-size: 28px;
+
+            font-weight: bold;
+
+            margin-bottom: 7px;
+
+        }
+
+
+        .stat-title {
+
+            color: #64748b;
+
+        }
+
+
+        .blue {
+
+            color: #2563eb;
+
+        }
+
+
+        .green {
+
+            color: #16a34a;
+
+        }
+
+
+        .red {
+
+            color: #dc2626;
+
+        }
+
+
+        .orange {
+
+            color: #ea580c;
+
+        }
+
+
+        /* =========================
+           الأقسام
+        ========================= */
+
+        .grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 20px;
+
+        }
+
+
+        .panel {
+
+            background: white;
+
+            border-radius: 16px;
+
+            padding: 22px;
+
+            box-shadow:
+                0 5px 20px
+                rgba(0,0,0,0.06);
+
+        }
+
+
+        .panel h2 {
+
+            font-size: 20px;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        /* =========================
+           المنتجات النافدة
+        ========================= */
+
+        .product-row {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+
+            padding: 14px 0;
+
+            border-bottom:
+                1px solid #edf0f4;
+
+        }
+
+
+        .product-name {
+
+            font-weight: bold;
+
+        }
+
+
+        .product-code {
+
+            color: #64748b;
+
+            font-size: 13px;
+
+            margin-top: 4px;
+
+        }
+
+
+        .quantity {
+
+            padding: 7px 11px;
+
+            border-radius: 20px;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+        }
+
+
+        .quantity.zero {
+
+            background: #fee2e2;
+
+            color: #991b1b;
+
+        }
+
+
+        .quantity.low {
+
+            background: #fef3c7;
+
+            color: #92400e;
+
+        }
+
+
+        /* =========================
+           المبيعات
+        ========================= */
+
+        .sales-box {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            padding: 15px 0;
+
+            border-bottom:
+                1px solid #edf0f4;
+
+        }
+
+
+        .sales-box:last-child {
+
+            border-bottom: none;
+
+        }
+
+
+        .sales-label {
+
+            color: #64748b;
+
+        }
+
+
+        .sales-value {
+
+            font-weight: bold;
+
+        }
+
+
+        /* =========================
+           الإجراءات
+        ========================= */
+
+        .actions {
+
+            margin-top: 20px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 12px;
+
+        }
+
+
+        .action {
+
+            background: white;
+
+            border: none;
+
+            padding: 18px;
+
+            border-radius: 14px;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 5px 20px
+                rgba(0,0,0,0.05);
+
+            font-size: 15px;
+
+        }
+
+
+        .action:hover {
+
+            background: #eff6ff;
+
+        }
+
+
+        /* =========================
+           موبايل
+        ========================= */
+
+        @media(max-width:850px) {
+
+            .stats {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+
+            .grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .actions {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+        }
+
+
+        @media(max-width:550px) {
+
+            header {
+
+                padding: 18px;
+
+            }
+
+
+            .stats {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .actions {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+
+    <div class="logo">
+
+        👟
+
+        <span>
+            شركة الكوتشيات
+        </span>
+
+    </div>
+
+
+    <div class="date"
+         id="date">
+
+    </div>
+
+
+</header>
+
+
+
+<div class="container">
+
+
+    <!-- =========================
+         العنوان
+    ========================= -->
+
+    <div class="title">
+
+        <h1>
+            📊 لوحة تحكم الشركة
+        </h1>
+
+        <p>
+            أهلاً بك، دي نظرة سريعة على حالة الشركة والمخزون.
+        </p>
+
+    </div>
+
+
+
+    <!-- =========================
+         الإحصائيات
+    ========================= -->
+
+    <div class="stats">
+
+
+        <div class="stat">
+
+            <div class="stat-icon">
+                📦
+            </div>
+
+            <div
+                class="stat-number blue"
+                id="totalProducts">
+
+                0
+
+            </div>
+
+            <div class="stat-title">
+
+                إجمالي المنتجات
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat">
+
+            <div class="stat-icon">
+                👟
+            </div>
+
+            <div
+                class="stat-number green"
+                id="totalQuantity">
+
+                0
+
+            </div>
+
+            <div class="stat-title">
+
+                إجمالي القطع الموجودة
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat">
+
+            <div class="stat-icon">
+                🔴
+            </div>
+
+            <div
+                class="stat-number red"
+                id="finishedProducts">
+
+                0
+
+            </div>
+
+            <div class="stat-title">
+
+                منتجات خلصانة
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat">
+
+            <div class="stat-icon">
+                💰
+            </div>
+
+            <div
+                class="stat-number orange"
+                id="inventoryValue">
+
+                0
+
+            </div>
+
+            <div class="stat-title">
+
+                قيمة المخزون
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =========================
+         الأقسام
+    ========================= -->
+
+    <div class="grid">
+
+
+        <!-- المنتجات النافدة -->
+
+        <div class="panel">
+
+            <h2>
+                ⚠️ المنتجات التي تحتاج متابعة
+            </h2>
+
+            <div id="lowProducts">
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ملخص المبيعات -->
+
+        <div class="panel">
+
+            <h2>
+                💰 ملخص المبيعات
+            </h2>
+
+
+            <div class="sales-box">
+
+                <span class="sales-label">
+                    مبيعات اليوم
+                </span>
+
+                <span
+                    class="sales-value"
+                    id="todaySales">
+
+                    0 جنيه
+
+                </span>
+
+            </div>
+
+
+            <div class="sales-box">
+
+                <span class="sales-label">
+                    عدد الفواتير اليوم
+                </span>
+
+                <span
+                    class="sales-value"
+                    id="todayInvoices">
+
+                    0
+
+                </span>
+
+            </div>
+
+
+            <div class="sales-box">
+
+                <span class="sales-label">
+                    مبيعات الشهر
+                </span>
+
+                <span
+                    class="sales-value"
+                    id="monthSales">
+
+                    0 جنيه
+
+                </span>
+
+            </div>
+
+
+            <div class="sales-box">
+
+                <span class="sales-label">
+                    إجمالي الأرباح
+                </span>
+
+                <span
+                    class="sales-value green"
+                    id="profits">
+
+                    0 جنيه
+
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =========================
+         الإجراءات السريعة
+    ========================= -->
+
+    <div class="panel"
+         style="margin-top:20px;">
+
+        <h2>
+            ⚡ إجراءات سريعة
+        </h2>
+
+
+        <div class="actions">
+
+
+            <button
+                class="action"
+                onclick="openPage('add-product.html')">
+
+                ➕
+                <br><br>
+
+                إضافة منتج
+
+            </button>
+
+
+            <button
+                class="action"
+                onclick="openPage('products.html')">
+
+                📦
+                <br><br>
+
+                المخزون
+
+            </button>
+
+
+            <button
+                class="action"
+                onclick="openPage('edit-product.html')">
+
+                ✏️
+                <br><br>
+
+                تعديل منتج
+
+            </button>
+
+
+            <button
+                class="action"
+                onclick="alert('صفحة المبيعات سيتم عملها في الخطوة القادمة')">
+
+                🧾
+                <br><br>
+
+                المبيعات
+
+            </button>
+
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+
+/* =========================
+   التاريخ
+========================= */
+
+const today =
+    new Date();
+
+
+document
+    .getElementById("date")
+    .textContent =
+    today.toLocaleDateString(
+        "ar-EG",
+        {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+        }
+    );
+
+
+
+/* =========================
+   قراءة المنتجات
+========================= */
+
+let products =
+    JSON.parse(
+        localStorage.getItem(
+            "products"
+        )
+    ) || [];
+
+
+
+/* =========================
+   الإحصائيات
+========================= */
+
+function updateDashboard() {
+
+
+    const totalProducts =
+        products.length;
+
+
+    const totalQuantity =
+        products.reduce(
+            function(total, product) {
+
+                return total +
+                    Number(
+                        product.quantity
+                    );
+
+            },
+            0
+        );
+
+
+    const finished =
+        products.filter(
+            function(product) {
+
+                return (
+                    Number(
+                        product.quantity
+                    ) === 0
+                );
+
+            }
+        ).length;
+
+
+    const inventoryValue =
+        products.reduce(
+            function(total, product) {
+
+                return total +
+
+                    (
+                        Number(
+                            product.price
+                        )
+
+                        *
+
+                        Number(
+                            product.quantity
+                        )
+                    );
+
+            },
+            0
+        );
+
+
+
+    document
+        .getElementById(
+            "totalProducts"
+        )
+        .textContent =
+        totalProducts;
+
+
+
+    document
+        .getElementById(
+            "totalQuantity"
+        )
+        .textContent =
+        totalQuantity;
+
+
+
+    document
+        .getElementById(
+            "finishedProducts"
+        )
+        .textContent =
+        finished;
+
+
+
+    document
+        .getElementById(
+            "inventoryValue"
+        )
+        .textContent =
+        inventoryValue
+        .toLocaleString()
+        +
+        " جنيه";
+
+
+}
+
+
+
+/* =========================
+   المنتجات التي تحتاج متابعة
+========================= */
+
+function showLowProducts() {
+
+
+    const container =
+        document.getElementById(
+            "lowProducts"
+        );
+
+
+    const lowProducts =
+        products.filter(
+            function(product) {
+
+                return (
+                    Number(
+                        product.quantity
+                    ) <= 2
+                );
+
+            }
+        );
+
+
+    if (
+        lowProducts.length === 0
+    ) {
+
+        container.innerHTML = `
+
+            <div
+                style="
+                padding:20px;
+                color:#16a34a;
+                text-align:center;
+                ">
+
+                ✅
+
+                <br><br>
+
+                كل المنتجات متوفرة
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML = "";
+
+
+    lowProducts.forEach(
+        function(product) {
+
+
+            const row =
+                document.createElement(
+                    "div"
+                );
+
+
+            row.className =
+                "product-row";
+
+
+            let quantityText =
+                "";
+
+
+            let quantityClass =
+                "";
+
+
+            if (
+                Number(
+                    product.quantity
+                ) === 0
+            ) {
+
+                quantityText =
+                    "🔴 خلصان";
+
+                quantityClass =
+                    "zero";
+
+            }
+
+            else {
+
+                quantityText =
+                    "🟡 باقي "
+                    +
+                    product.quantity;
+
+                quantityClass =
+                    "low";
+
+            }
+
+
+            row.innerHTML = `
+
+                <div>
+
+                    <div
+                        class="product-name">
+
+                        ${product.name}
+
+                    </div>
+
+                    <div
+                        class="product-code">
+
+                        ${product.code}
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="quantity
+                    ${quantityClass}">
+
+                    ${quantityText}
+
+                </div>
+
+            `;
+
+
+            container.appendChild(row);
+
+        }
+    );
+
+}
+
+
+
+/* =========================
+   المبيعات
+========================= */
+
+/*
+
+حالياً مفيش صفحة مبيعات،
+لذلك القيم دي مؤقتة.
+
+بعد ما نعمل صفحة
+الفواتير والمبيعات
+هتتحسب تلقائياً.
+
+*/
+
+document
+    .getElementById(
+        "todaySales"
+    )
+    .textContent =
+    "0 جنيه";
+
+
+document
+    .getElementById(
+        "todayInvoices"
+    )
+    .textContent =
+    "0";
+
+
+document
+    .getElementById(
+        "monthSales"
+    )
+    .textContent =
+    "0 جنيه";
+
+
+document
+    .getElementById(
+        "profits"
+    )
+    .textContent =
+    "0 جنيه";
+
+
+
+/* =========================
+   فتح الصفحات
+========================= */
+
+function openPage(page) {
+
+    window.location.href =
+        page;
+
+}
+
+
+
+/* =========================
+   تشغيل الصفحة
+========================= */
+
+updateDashboard();
+
+showLowProducts();
+
+
+</script>
+
+
+</body>
+
+</html>

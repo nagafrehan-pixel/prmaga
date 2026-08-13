@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>البحث عن منتج - شركة الكوتشيات</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Tahoma, sans-serif;
+        }
+
+        body {
+            background: #f3f6fa;
+            color: #172033;
+        }
+
+        header {
+            background: #111827;
+            color: white;
+            padding: 20px 40px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .title h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .title p {
+            color: #64748b;
+        }
+
+        .search-box {
+            background: white;
+            padding: 12px;
+            border-radius: 15px;
+
+            display: flex;
+            gap: 10px;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.07);
+
+            margin-bottom: 25px;
+        }
+
+        .search-box input {
+            flex: 1;
+
+            padding: 16px;
+
+            border:
+                1px solid #d9dee7;
+
+            border-radius: 10px;
+
+            font-size: 17px;
+
+            outline: none;
+        }
+
+        .search-box input:focus {
+            border-color: #2563eb;
+        }
+
+        .search-box button {
+            background: #2563eb;
+            color: white;
+
+            border: none;
+
+            padding: 0 30px;
+
+            border-radius: 10px;
+
+            font-size: 16px;
+
+            cursor: pointer;
+        }
+
+        .search-box button:hover {
+            background: #1d4ed8;
+        }
+
+        .message {
+            background: white;
+
+            padding: 55px 20px;
+
+            text-align: center;
+
+            border-radius: 15px;
+
+            color: #64748b;
+
+            font-size: 18px;
+        }
+
+        .product {
+            display: none;
+
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 25px;
+
+            grid-template-columns:
+                320px 1fr;
+
+            gap: 30px;
+
+            box-shadow:
+                0 8px 30px
+                rgba(0,0,0,0.08);
+        }
+
+        .product-image {
+            height: 320px;
+
+            background: #eef2f7;
+
+            border-radius: 15px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: contain;
+
+            display: none;
+        }
+
+        .shoe-icon {
+            font-size: 100px;
+        }
+
+        .product-info h2 {
+            font-size: 28px;
+            margin-bottom: 18px;
+        }
+
+        .info {
+            margin: 13px 0;
+            font-size: 17px;
+        }
+
+        .info span {
+            font-weight: bold;
+        }
+
+        .price {
+            color: #2563eb;
+
+            font-size: 30px;
+
+            font-weight: bold;
+
+            margin: 20px 0;
+        }
+
+        .sizes {
+            display: flex;
+            gap: 8px;
+
+            flex-wrap: wrap;
+
+            margin-top: 10px;
+        }
+
+        .size {
+            background: #eef2ff;
+
+            color: #1d4ed8;
+
+            padding: 8px 13px;
+
+            border-radius: 8px;
+        }
+
+        .status {
+            display: inline-block;
+
+            padding: 10px 18px;
+
+            border-radius: 25px;
+
+            font-weight: bold;
+
+            margin-top: 15px;
+        }
+
+        .available {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .low {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .finished {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        @media(max-width:750px) {
+
+            header {
+                padding: 18px;
+            }
+
+            .search-box {
+                flex-direction: column;
+            }
+
+            .search-box button {
+                padding: 15px;
+            }
+
+            .product {
+                grid-template-columns: 1fr;
+            }
+
+            .product-image {
+                height: 280px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="logo">
+
+        👟
+        <span>شركة الكوتشيات</span>
+
+    </div>
+
+    <div>
+        البحث عن منتج
+    </div>
+
+</header>
+
+
+
+<div class="container">
+
+
+    <div class="title">
+
+        <h1>
+            البحث عن منتج
+        </h1>
+
+        <p>
+            اكتب اسم الكوتشي أو كود المنتج
+        </p>
+
+    </div>
+
+
+
+    <!-- البحث -->
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="🔎 اكتب اسم الكوتشي أو الكود..."
+            autocomplete="off"
+        >
+
+        <button onclick="searchProduct()">
+
+            بحث
+
+        </button>
+
+    </div>
+
+
+
+    <!-- رسالة البداية -->
+
+    <div
+        class="message"
+        id="message">
+
+        👟
+
+        <br><br>
+
+        اكتب اسم المنتج لعرض بياناته
+
+    </div>
+
+
+
+    <!-- بيانات المنتج -->
+
+    <div
+        class="product"
+        id="product">
+
+
+        <!-- صورة المنتج -->
+
+        <div class="product-image">
+
+            <img
+                id="productImage"
+                alt="صورة المنتج">
+
+            <div
+                class="shoe-icon"
+                id="shoeIcon">
+
+                👟
+
+            </div>
+
+        </div>
+
+
+
+        <!-- المعلومات -->
+
+        <div class="product-info">
+
+
+            <h2 id="productName">
+                -
+            </h2>
+
+
+            <div class="info">
+
+                الكود:
+
+                <span id="productCode">
+                    -
+                </span>
+
+            </div>
+
+
+            <div class="info">
+
+                الماركة:
+
+                <span id="productBrand">
+                    -
+                </span>
+
+            </div>
+
+
+            <div class="info">
+
+                النوع:
+
+                <span id="productType">
+                    -
+                </span>
+
+            </div>
+
+
+            <div class="info">
+
+                اللون:
+
+                <span id="productColor">
+                    -
+                </span>
+
+            </div>
+
+
+            <div class="price">
+
+                <span id="productPrice">
+                    0
+                </span>
+
+                جنيه
+
+            </div>
+
+
+            <div class="info">
+
+                المقاسات المتاحة:
+
+                <div
+                    class="sizes"
+                    id="sizes">
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="status"
+                id="productStatus">
+
+                -
+
+            </div>
+
+
+            <div class="info">
+
+                الكمية:
+
+                <span id="productQuantity">
+                    0
+                </span>
+
+                قطعة
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+
+/*
+====================================
+قراءة المنتجات من التخزين
+====================================
+*/
+
+function getProducts() {
+
+    return JSON.parse(
+        localStorage.getItem("products")
+    ) || [];
+
+}
+
+
+
+/*
+====================================
+البحث عن المنتج
+====================================
+*/
+
+function searchProduct() {
+
+
+    const input =
+        document
+        .getElementById("searchInput")
+        .value
+        .trim()
+        .toLowerCase();
+
+
+    if (input === "") {
+
+        showMessage(
+            "🔎<br><br>اكتب اسم المنتج أو الكود أولاً"
+        );
+
+        return;
+
+    }
+
+
+    const products =
+        getProducts();
+
+
+    /*
+        البحث بالاسم
+        أو الكود
+        أو الماركة
+    */
+
+    const product =
+        products.find(
+            function(item) {
+
+                return (
+
+                    String(item.name || "")
+                    .toLowerCase()
+                    .includes(input)
+
+                    ||
+
+                    String(item.code || "")
+                    .toLowerCase()
+                    .includes(input)
+
+                    ||
+
+                    String(item.brand || "")
+                    .toLowerCase()
+                    .includes(input)
+
+                );
+
+            }
+        );
+
+
+    if (!product) {
+
+        showMessage(
+            "❌<br><br>المنتج غير موجود في المخزون"
+        );
+
+        return;
+
+    }
+
+
+    showProduct(product);
+
+}
+
+
+
+/*
+====================================
+عرض المنتج
+====================================
+*/
+
+function showProduct(product) {
+
+
+    document
+        .getElementById("message")
+        .style.display = "none";
+
+
+    document
+        .getElementById("product")
+        .style.display = "grid";
+
+
+    /*
+        الاسم
+    */
+
+    document
+        .getElementById("productName")
+        .textContent =
+        product.name || "-";
+
+
+    /*
+        الكود
+    */
+
+    document
+        .getElementById("productCode")
+        .textContent =
+        product.code || "-";
+
+
+    /*
+        الماركة
+    */
+
+    document
+        .getElementById("productBrand")
+        .textContent =
+        product.brand || "-";
+
+
+    /*
+        النوع
+    */
+
+    document
+        .getElementById("productType")
+        .textContent =
+        product.type || "-";
+
+
+    /*
+        اللون
+    */
+
+    document
+        .getElementById("productColor")
+        .textContent =
+        product.color || "-";
+
+
+    /*
+        السعر
+    */
+
+    document
+        .getElementById("productPrice")
+        .textContent =
+        Number(
+            product.price || 0
+        ).toLocaleString();
+
+
+    /*
+        الكمية
+    */
+
+    document
+        .getElementById("productQuantity")
+        .textContent =
+        product.quantity || 0;
+
+
+
+    /*
+        المقاسات
+    */
+
+    const sizes =
+        document
+        .getElementById("sizes");
+
+
+    sizes.innerHTML = "";
+
+
+    if (
+        product.sizes &&
+        product.sizes.length > 0
+    ) {
+
+
+        product.sizes.forEach(
+            function(size) {
+
+                const div =
+                    document.createElement(
+                        "div"
+                    );
+
+                div.className =
+                    "size";
+
+                div.textContent =
+                    size;
+
+                sizes.appendChild(div);
+
+            }
+        );
+
+
+    } else {
+
+        sizes.innerHTML =
+            "<span>لا توجد مقاسات مسجلة</span>";
+
+    }
+
+
+
+    /*
+        حالة المنتج
+    */
+
+    const status =
+        document
+        .getElementById(
+            "productStatus"
+        );
+
+
+    const quantity =
+        Number(
+            product.quantity || 0
+        );
+
+
+    if (quantity === 0) {
+
+
+        status.className =
+            "status finished";
+
+
+        status.textContent =
+            "🔴 المنتج خلصان";
+
+
+    }
+
+    else if (quantity <= 2) {
+
+
+        status.className =
+            "status low";
+
+
+        status.textContent =
+            "🟡 المنتج قرب يخلص";
+
+
+    }
+
+    else {
+
+
+        status.className =
+            "status available";
+
+
+        status.textContent =
+            "🟢 المنتج متوفر";
+
+    }
+
+
+
+    /*
+        صورة المنتج
+    */
+
+    const image =
+        document
+        .getElementById(
+            "productImage"
+        );
+
+
+    const icon =
+        document
+        .getElementById(
+            "shoeIcon"
+        );
+
+
+    /*
+        حاليًا صفحة الإضافة
+        لا تحفظ الصورة،
+        لذلك لو مفيش صورة
+        يظهر رمز الكوتشي.
+    */
+
+    if (product.image) {
+
+        image.src =
+            product.image;
+
+        image.style.display =
+            "block";
+
+        icon.style.display =
+            "none";
+
+    }
+
+    else {
+
+        image.style.display =
+            "none";
+
+        icon.style.display =
+            "block";
+
+    }
+
+}
+
+
+
+/*
+====================================
+رسالة
+====================================
+*/
+
+function showMessage(text) {
+
+
+    document
+        .getElementById("product")
+        .style.display = "none";
+
+
+    const message =
+        document.getElementById(
+            "message"
+        );
+
+
+    message.innerHTML =
+        text;
+
+
+    message.style.display =
+        "block";
+
+}
+
+
+
+/*
+====================================
+البحث بالضغط على Enter
+====================================
+*/
+
+document
+    .getElementById("searchInput")
+    .addEventListener(
+        "keydown",
+        function(event) {
+
+            if (
+                event.key === "Enter"
+            ) {
+
+                searchProduct();
+
+            }
+
+        }
+    );
+
+
+
+/*
+====================================
+بحث تلقائي أثناء الكتابة
+====================================
+*/
+
+document
+    .getElementById("searchInput")
+    .addEventListener(
+        "input",
+        function() {
+
+
+            const value =
+                this.value.trim();
+
+
+            if (value === "") {
+
+                showMessage(
+                    "👟<br><br>اكتب اسم المنتج لعرض بياناته"
+                );
+
+                return;
+
+            }
+
+
+            /*
+                البحث تلقائي
+                بمجرد كتابة اسم المنتج
+            */
+
+            searchProduct();
+
+        }
+    );
+
+</script>
+
+
+</body>
+
+</html>
