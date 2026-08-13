@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>اختبار البرمجة - موقع التعلم</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* تصميم إضافي للاختبار */
+.quiz-container {
+    max-width: 900px;
+    margin: 50px auto;
+    background: rgba(0,0,0,0.75);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+}
+.quiz-container h1 {
+    color: #f1c40f;
+    margin-bottom: 25px;
+}
+.question {
+    margin-bottom: 20px;
+}
+.options label {
+    display: block;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.1);
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.options input[type="radio"] {
+    margin-right: 10px;
+}
+.options label:hover {
+    background: rgba(241, 196, 15, 0.3);
+}
+.submit-btn {
+    background-color: #e67e22;
+    color: #fff;
+    font-weight: bold;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.submit-btn:hover {
+    background-color: #d35400;
+}
+.result {
+    margin-top: 25px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.correct {
+    color: #2ecc71;
+}
+.incorrect {
+    color: #e74c3c;
+}
+</style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <h1>اختبار البرمجة</h1>
+    <form id="quizForm">
+        <!-- السؤال 1 -->
+        <div class="question">
+            <p>1. ما هي لغة البرمجة المستخدمة لتطوير مواقع الويب؟</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="أ"> أ) HTML</label>
+                <label><input type="radio" name="q1" value="ب"> ب) C++</label>
+                <label><input type="radio" name="q1" value="ج"> ج) Python</label>
+                <label><input type="radio" name="q1" value="د"> د) Java</label>
+            </div>
+        </div>
+
+        <!-- السؤال 2 -->
+        <div class="question">
+            <p>2. أي من هذه اللغات تُستخدم للبرمجة الخلفية (Back-end)؟</p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="أ"> أ) PHP</label>
+                <label><input type="radio" name="q2" value="ب"> ب) CSS</label>
+                <label><input type="radio" name="q2" value="ج"> ج) HTML</label>
+                <label><input type="radio" name="q2" value="د"> د) JavaScript فقط</label>
+            </div>
+        </div>
+
+        <!-- السؤال 3 -->
+        <div class="question">
+            <p>3. ما وظيفة CSS في تطوير الويب؟</p>
+            <div class="options">
+                <label><input type="radio" name="q3" value="أ"> أ) تصميم وتنسيق صفحات الويب</label>
+                <label><input type="radio" name="q3" value="ب"> ب) معالجة البيانات على الخادم</label>
+                <label><input type="radio" name="q3" value="ج"> ج) تخزين البيانات في قاعدة البيانات</label>
+                <label><input type="radio" name="q3" value="د"> د) إنشاء الخوارزميات</label>
+            </div>
+        </div>
+
+        <button type="button" class="submit-btn" onclick="submitQuiz()">إرسال الاختبار</button>
+    </form>
+
+    <div id="result" class="result"></div>
+</div>
+
+<script>
+function submitQuiz() {
+    const answers = {
+        q1: 'أ',
+        q2: 'أ',
+        q3: 'أ'
+    };
+
+    let score = 0;
+    for (let key in answers) {
+        const selected = document.querySelector(`input[name="${key}"]:checked`);
+        if (selected && selected.value === answers[key]) {
+            score++;
+        }
+    }
+
+    const total = Object.keys(answers).length;
+    document.getElementById('result').innerHTML = `لقد حصلت على <span class="correct">${score}</span> من <span class="correct">${total}</span>`;
+}
+</script>
+
+</body>
+</html>
